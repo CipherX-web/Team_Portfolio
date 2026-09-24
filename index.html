@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CipherX — Full-Stack Engineering Collective</title>
+  <meta name="description" content="CipherX is a dedicated five-person full-stack engineering team. We architect, design, build, and ship robust digital products end to end.">
+  <link rel="icon" type="image/png" href="cipherX-icon.png">
+  <link rel="apple-touch-icon" href="cipherX-icon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.72/build/spline-viewer.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="progress" id="progressBar"></div>
+
+  <header class="site">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="CipherX home">
+        <img src="cipherX-icon.png" alt="CipherX logo" style="width: 32px; height: 32px; object-fit: contain; border-radius: 6px;">
+        <span>CipherX</span>
+      </a>
+      <nav class="links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="heroSection">
+      <div class="hero-spline-wrap">
+        <spline-viewer url="https://prod.spline.design/9xuF1oRA5poA131s/scene.splinecode"></spline-viewer>
+      </div>
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <div class="cursor-glow" id="cursorGlow"></div>
+      <svg class="hero-trace" id="heroTrace" viewBox="0 0 1120 520" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 460 L220 460 L260 420 L640 420 L680 460 L1120 460"/>
+        <path d="M900 0 L900 140 L940 180 L940 520"/>
+        <circle cx="260" cy="420" r="4"/>
+        <circle cx="940" cy="180" r="4"/>
+      </svg>
+      <div class="wrap">
+        <p class="eyebrow">// full-stack collective — 5 engineers</p>
+        <h1 class="wordmark">CipherX</h1>
+        <p class="lede">We design, architect, and ship high-performance software end to end — from data schema to interface, from initial commit to scalable production.</p>
+        <div class="hero-meta">
+          <span><strong class="count" data-target="5">0</strong> core engineers</span>
+          <span>Frontend to cloud infrastructure</span>
+          <span>Open-source & enterprise ready</span>
+          <span>Distributed & agile</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <span>React</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>AWS</span><span>React Native</span><span>GraphQL</span><span>Kubernetes</span><span>Tailwind</span>
+        <span>React</span><span>TypeScript</span><span>Node.js</span><span>Python</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>AWS</span><span>React Native</span><span>GraphQL</span><span>Kubernetes</span><span>Tailwind</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <p class="eyebrow">About</p>
+          <p><strong>CipherX is an integrated five-engineer squad built to deliver complete digital products with surgical precision.</strong> Rather than handing work across disjointed silos, our cross-functional collective operates as a unified product engine — mastering interfaces, resilient APIs, low-latency data pipelines, and rock-solid deployment topologies.</p>
+          <p>We work in rapid, feedback-driven sprints: conceptualize quickly, validate with production-grade prototypes, optimize rigorously, and scale with unwavering reliability.</p>
+        </div>
+        <ul class="capabilities reveal">
+          <li><span>Frontend & Interfaces</span><span class="tag">React · TypeScript · Next.js</span></li>
+          <li><span>Backend & Microservices</span><span class="tag">Node · Python · Go</span></li>
+          <li><span>Data & Streaming</span><span class="tag">PostgreSQL · Redis · Kafka</span></li>
+          <li><span>Cloud & Infrastructure</span><span class="tag">Docker · Kubernetes · AWS</span></li>
+          <li><span>Cross-Platform Mobile</span><span class="tag">React Native · Swift</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>The team</h2>
+          <p class="index">5 core engineers</p>
+        </div>
+        <ul class="roster">
+
+          <li class="reveal">
+            <div class="avatar-ring">
+              <img src="https://ui-avatars.com/api/?name=Alex+Vance&background=2F5FE8&color=fff&size=160&bold=true" alt="Alex Vance">
+            </div>
+            <div class="member-main">
+              <div class="member-heading">
+                <span class="member-name">Alex Vance</span>
+                <span class="member-role">Team Lead · Principal Architect</span>
+              </div>
+              <div class="member-socials">
+                <a class="social-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+                  alex-vance
+                </a>
+                <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.5 8.5h3.9V21H3.5V8.5Zm6.3 0h3.74v1.7h.05c.52-.96 1.79-1.98 3.68-1.98 3.94 0 4.66 2.53 4.66 5.83V21h-3.9v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.58-2.35 3.22V21H9.8V8.5Z"/></svg>
+                  alexvance
+                </a>
+              </div>
+            </div>
+            <p class="member-blurb">Steers system topology, technical strategy, and distributed service orchestration. Obsessed with high cohesion, fault tolerance, and developer velocity.</p>
+          </li>
+
+          <li class="reveal">
+            <div class="avatar-ring">
+              <img src="https://ui-avatars.com/api/?name=Elena+Rostova&background=6C8CF5&color=fff&size=160&bold=true" alt="Elena Rostova">
+            </div>
+            <div class="member-main">
+              <div class="member-heading">
+                <span class="member-name">Elena Rostova</span>
+                <span class="member-role">Staff Frontend & UI Engineer</span>
+              </div>
+              <div class="member-socials">
+                <a class="social-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+                  erostova
+                </a>
+                <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.5 8.5h3.9V21H3.5V8.5Zm6.3 0h3.74v1.7h.05c.52-.96 1.79-1.98 3.68-1.98 3.94 0 4.66 2.53 4.66 5.83V21h-3.9v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.58-2.35 3.22V21H9.8V8.5Z"/></svg>
+                  elena-rostova
+                </a>
+              </div>
+            </div>
+            <p class="member-blurb">Crafts ergonomic user journeys, performant component ecosystems, and fluid micro-animations. Blends obsessive typography with full WCAG AA accessibility.</p>
+          </li>
+
+          <li class="reveal">
+            <div class="avatar-ring">
+              <img src="https://ui-avatars.com/api/?name=Marcus+Chen&background=0D1E40&color=fff&size=160&bold=true" alt="Marcus Chen">
+            </div>
+            <div class="member-main">
+              <div class="member-heading">
+                <span class="member-name">Marcus Chen</span>
+                <span class="member-role">Principal Backend & Systems Engineer</span>
+              </div>
+              <div class="member-socials">
+                <a class="social-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+                  m-chen
+                </a>
+                <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.5 8.5h3.9V21H3.5V8.5Zm6.3 0h3.74v1.7h.05c.52-.96 1.79-1.98 3.68-1.98 3.94 0 4.66 2.53 4.66 5.83V21h-3.9v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.58-2.35 3.22V21H9.8V8.5Z"/></svg>
+                  marcuschen-dev
+                </a>
+              </div>
+            </div>
+            <p class="member-blurb">Designs deterministic data pipelines, sub-millisecond cache hierarchies, and bulletproof relational models that scale without breaking a sweat.</p>
+          </li>
+
+          <li class="reveal">
+            <div class="avatar-ring">
+              <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=2F5FE8&color=fff&size=160&bold=true" alt="Priya Patel">
+            </div>
+            <div class="member-main">
+              <div class="member-heading">
+                <span class="member-name">Priya Patel</span>
+                <span class="member-role">Senior Full-Stack Product Engineer</span>
+              </div>
+              <div class="member-socials">
+                <a class="social-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+                  priyapatel
+                </a>
+                <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.5 8.5h3.9V21H3.5V8.5Zm6.3 0h3.74v1.7h.05c.52-.96 1.79-1.98 3.68-1.98 3.94 0 4.66 2.53 4.66 5.83V21h-3.9v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.58-2.35 3.22V21H9.8V8.5Z"/></svg>
+                  priya-patel-eng
+                </a>
+              </div>
+            </div>
+            <p class="member-blurb">Bridging customer-facing features with backend foundations. Specializes in rapid prototyping, cross-platform synchronization, and reactive state systems.</p>
+          </li>
+
+          <li class="reveal">
+            <div class="avatar-ring">
+              <img src="https://ui-avatars.com/api/?name=Jordan+Brooks&background=6C8CF5&color=fff&size=160&bold=true" alt="Jordan Brooks">
+            </div>
+            <div class="member-main">
+              <div class="member-heading">
+                <span class="member-name">Jordan Brooks</span>
+                <span class="member-role">Staff DevOps & Platform Engineer</span>
+              </div>
+              <div class="member-socials">
+                <a class="social-link" href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+                  jordan-brooks
+                </a>
+                <a class="social-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.5 8.5h3.9V21H3.5V8.5Zm6.3 0h3.74v1.7h.05c.52-.96 1.79-1.98 3.68-1.98 3.94 0 4.66 2.53 4.66 5.83V21h-3.9v-6.1c0-1.46-.03-3.33-2.03-3.33-2.04 0-2.35 1.58-2.35 3.22V21H9.8V8.5Z"/></svg>
+                  jordan-brooks-infra
+                </a>
+              </div>
+            </div>
+            <p class="member-blurb">Automates container orchestration, immutable infrastructure-as-code, and continuous zero-downtime deployment pipelines across cloud environments.</p>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Selected projects</h2>
+          <p>Production systems we have designed and shipped. Expand any entry for architecture details.</p>
+        </div>
+        <div class="project-log">
+
+          <div class="project-item reveal">
+            <button class="project-row" aria-expanded="false">
+              <span class="project-title">Project Aperture</span>
+              <span class="project-status live">Live</span>
+              <svg class="project-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="project-body">
+              <div class="project-body-inner">
+                <p>A unified observability and engineering telemetry platform delivering sub-second anomaly detection, dynamic RBAC workspaces, and live streaming metrics across distributed microservices.</p>
+                <div class="stack-tags">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>PostgreSQL</span>
+                  <span>Docker</span>
+                  <span>TimescaleDB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item reveal">
+            <button class="project-row" aria-expanded="false">
+              <span class="project-title">Ledgerly</span>
+              <span class="project-status">In progress</span>
+              <svg class="project-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="project-body">
+              <div class="project-body-inner">
+                <p>An offline-first reconciliation and financial operations engine for global remote teams, featuring automatic currency conversion, cryptographic audit trails, and instant receipt OCR parsing.</p>
+                <div class="stack-tags">
+                  <span>React Native</span>
+                  <span>Python</span>
+                  <span>FastAPI</span>
+                  <span>Redis</span>
+                  <span>SQLite</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-item reveal">
+            <button class="project-row" aria-expanded="false">
+              <span class="project-title">Relay</span>
+              <span class="project-status live">Live</span>
+              <svg class="project-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="project-body">
+              <div class="project-body-inner">
+                <p>A high-concurrency event bus and notification dispatcher processing over 10M webhook deliveries per day with idempotent retries, backpressure controls, and real-time WebSocket fan-out.</p>
+                <div class="stack-tags">
+                  <span>Node.js</span>
+                  <span>WebSockets</span>
+                  <span>PostgreSQL</span>
+                  <span>Go</span>
+                  <span>Redis Streams</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact reveal">
+        <h2>Have a project in mind?</h2>
+        <a class="contact-cta" href="mailto:hello@cipherx.dev">
+          hello@cipherx.dev
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+      <span>CipherX — full-stack engineering team</span>
+      <span>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;·&nbsp;
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp;
+        <a href="mailto:hello@cipherx.dev">Email</a>
+      </span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <!-- Floating Quick Nav Dock -->
+  <div class="floating-dock" aria-label="Quick links dock">
+    <a href="#top" class="dock-item" aria-label="Home" title="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+    <span class="dock-divider"></span>
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="dock-item" aria-label="LinkedIn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.12,1.57,1.57,0,1,1,0,3.12ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z"/></svg>
+    </a>
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="dock-item" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .28.18.61.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+    </a>
+    <a href="mailto:hello@cipherx.dev" class="dock-item" aria-label="Email" title="Email hello@cipherx.dev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+  </div>
+
+</body>
+</html>

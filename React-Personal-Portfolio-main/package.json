@@ -1,0 +1,14 @@
+{
+  "name": "cipherx-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CipherX — Full-Stack Engineering Collective Portfolio",
+  "scripts": {
+    "dev": "npm --prefix Ashif run dev",
+    "build": "npm --prefix Ashif run build",
+    "preview": "npm --prefix Ashif run preview"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

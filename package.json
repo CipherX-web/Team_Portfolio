@@ -1,0 +1,14 @@
+{
+  "name": "cipherx-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CipherX — Full-Stack Engineering Collective",
+  "scripts": {
+    "dev": "npm --prefix React-Personal-Portfolio-main/Ashif run dev",
+    "build": "npm --prefix React-Personal-Portfolio-main/Ashif run build",
+    "preview": "npm --prefix React-Personal-Portfolio-main/Ashif run preview"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
