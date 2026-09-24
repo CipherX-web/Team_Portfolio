@@ -22,8 +22,8 @@ const ICONS = {
 
 const TEAM_MEMBERS = [
   {
-    id: "alex",
-    name: "Alex Vance",
+    id: "lakshan",
+    name: "Lakshan Jaywardhana",
     role: "Team Lead & Systems Architect",
     focus: "Architecture, Topology & Resilience",
     avatar: member1,
@@ -32,8 +32,8 @@ const TEAM_MEMBERS = [
     linkedin: "https://linkedin.com",
   },
   {
-    id: "elena",
-    name: "Elena Rostova",
+    id: "prageeth",
+    name: "Prageeth Chamuditha",
     role: "Staff Frontend & UI Engineer",
     focus: "Design Systems, Micro-Interactions & A11y",
     avatar: member2,
@@ -42,8 +42,8 @@ const TEAM_MEMBERS = [
     linkedin: "https://linkedin.com",
   },
   {
-    id: "marcus",
-    name: "Marcus Chen",
+    id: "kamitha",
+    name: "Kamitha Akash",
     role: "Principal Backend & Systems",
     focus: "High-Throughput APIs & Low-Latency Data",
     avatar: member3,
@@ -52,8 +52,8 @@ const TEAM_MEMBERS = [
     linkedin: "https://linkedin.com",
   },
   {
-    id: "priya",
-    name: "Priya Patel",
+    id: "vidura",
+    name: "Vidura Pabasara",
     role: "Senior Full-Stack Product",
     focus: "End-to-End Features & Mobile Sync",
     avatar: member4,
@@ -62,8 +62,8 @@ const TEAM_MEMBERS = [
     linkedin: "https://linkedin.com",
   },
   {
-    id: "jordan",
-    name: "Jordan Brooks",
+    id: "dinisuru",
+    name: "Dinisuru Sangadith",
     role: "Staff DevOps & Platform",
     focus: "Cloud Infrastructure & Zero-Downtime CI/CD",
     avatar: member5,

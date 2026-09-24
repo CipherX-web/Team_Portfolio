@@ -14,7 +14,7 @@ export default function Hero() {
     'Schema to Interface',
     'Scalable Systems Architects'
   ];
-  const greetings = ["Hello", "Hola", "Ciao", "مرحبا"];
+  const greetings = ["Hello,", "ආයුබෝවන්,", "வணக்கம்,"];
 
   const handleSplineLoad = (splineApp) => {
     try {
@@ -123,10 +123,14 @@ export default function Hero() {
           <p className="font-mono text-[11px] sm:text-xs md:text-sm tracking-wider uppercase text-[#2F5FE8] mb-1 sm:mb-2 font-semibold">
             // full-stack collective — 5 engineers
           </p>
-          <h1 className="font-pixel flex flex-wrap items-center justify-center md:justify-start gap-x-1 sm:gap-x-2 text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#0D1E40]">
-            <WordRotate words={greetings} className="text-[#0D1E40]" />
-            <span className="text-[#0D1E40]">, We're </span>
-            <span className="text-[#2F5FE8]">CipherX</span>
+          <h1 className="font-pixel text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#0D1E40] leading-tight">
+            <span className="inline-flex items-center justify-center md:justify-start whitespace-nowrap gap-x-1.5 sm:gap-x-2">
+              <WordRotate words={greetings} className="text-[#0D1E40]" />
+              <span className="text-[#0D1E40]">We're</span>
+            </span>
+            <span className="block text-[#2F5FE8]">
+              CipherX
+            </span>
           </h1>
           
           {/* Rotating Text for Capabilities */}
