@@ -55,14 +55,14 @@ export default function Skills() {
                filter: 'blur(4px)'
              }}
         />
-        <VelocityText baseVelocity={-5} numCopies={4}>
+        <VelocityText baseVelocity={-40} numCopies={4}>
           {skillsRow1.map((logo, index) => (
             <div key={index} className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 text-gray-600 mx-1.5 sm:mx-2.5 md:mx-4 flex items-center justify-center p-0.5 sm:p-1">
               {logo}
             </div>
           ))}
         </VelocityText>
-        <VelocityText baseVelocity={5} numCopies={4}>
+        <VelocityText baseVelocity={40} numCopies={4}>
           {skillsRow2.map((logo, index) => (
             <div key={index} className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 text-gray-600 mx-1.5 sm:mx-2.5 md:mx-4 flex items-center justify-center p-0.5 sm:p-1">
               {logo}

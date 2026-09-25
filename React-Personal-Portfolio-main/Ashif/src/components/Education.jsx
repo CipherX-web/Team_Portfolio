@@ -18,18 +18,24 @@ const ICONS = {
       <path d="M12,2.2467A10.00042,10.00042,0,0,0,8.83752,21.73419c.5.08752.6875-.21247.6875-.475,0-.23749-.01251-1.025-.01251-1.86249C7,19.85919,6.35,18.78423,6.15,18.22173A3.636,3.636,0,0,0,5.125,16.8092c-.35-.1875-.85-.65-.01251-.66248A2.00117,2.00117,0,0,1,6.65,17.17169a2.13742,2.13742,0,0,0,2.91248.825A2.10376,2.10376,0,0,1,10.2,16.65923c-2.225-.25-4.55-1.11254-4.55-4.9375a3.89187,3.89187,0,0,1,1.025-2.6875,3.59373,3.59373,0,0,1,.1-2.65s.83747-.26251,2.75,1.025a9.42747,9.42747,0,0,1,5,0c1.91248-1.3,2.75-1.025,2.75-1.025a3.59323,3.59323,0,0,1,.1,2.65,3.869,3.869,0,0,1,1.025,2.6875c0,3.83747-2.33752,4.6875-4.5625,4.9375a2.36814,2.36814,0,0,1,.675,1.85c0,1.33752-.01251,2.41248-.01251,2.75,0,.26251.1875.575.6875.475A10.0053,10.0053,0,0,0,12,2.2467Z"/>
     </svg>
   ),
+  X: (props) => (
+    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+    </svg>
+  ),
 };
 
 const TEAM_MEMBERS = [
   {
     id: "lakshan",
-    name: "Lakshan Jaywardhana",
+    name: "Lakshan Jayawardana",
     role: "Team Lead & Systems Architect",
     focus: "Architecture, Topology & Resilience",
     avatar: member1,
     stack: ["Go", "Node.js", "Microservices", "System Topology"],
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/LakshanSj",
+    linkedin: "https://www.linkedin.com/in/lakshan-jayawardana/",
+    x: "https://x.com/CipherXzr",
   },
   {
     id: "prageeth",
@@ -38,8 +44,9 @@ const TEAM_MEMBERS = [
     focus: "Design Systems, Micro-Interactions & A11y",
     avatar: member2,
     stack: ["React", "Next.js", "TypeScript", "Tailwind", "Motion"],
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/cipherxwebteam",
+    linkedin: "https://www.linkedin.com/company/cipherx-team/",
+    x: "https://x.com/CipherXzr",
   },
   {
     id: "kamitha",
@@ -48,8 +55,9 @@ const TEAM_MEMBERS = [
     focus: "High-Throughput APIs & Low-Latency Data",
     avatar: member3,
     stack: ["PostgreSQL", "Redis", "Python", "Kafka", "Event Sourcing"],
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/cipherxwebteam",
+    linkedin: "https://www.linkedin.com/company/cipherx-team/",
+    x: "https://x.com/CipherXzr",
   },
   {
     id: "vidura",
@@ -58,8 +66,9 @@ const TEAM_MEMBERS = [
     focus: "End-to-End Features & Mobile Sync",
     avatar: member4,
     stack: ["React Native", "TypeScript", "GraphQL", "Offline-first"],
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/cipherxwebteam",
+    linkedin: "https://www.linkedin.com/company/cipherx-team/",
+    x: "https://x.com/CipherXzr",
   },
   {
     id: "dinisuru",
@@ -68,8 +77,9 @@ const TEAM_MEMBERS = [
     focus: "Cloud Infrastructure & Zero-Downtime CI/CD",
     avatar: member5,
     stack: ["Docker", "Kubernetes", "AWS", "Terraform", "Prometheus"],
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/cipherxwebteam",
+    linkedin: "https://www.linkedin.com/company/cipherx-team/",
+    x: "https://x.com/CipherXzr",
   },
 ];
 
@@ -149,16 +159,16 @@ export default function Education() {
                 </div>
               </div>
 
-              {/* Social Links: GitHub & LinkedIn */}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-                <span className="text-xs font-mono text-slate-600 font-medium">Connect:</span>
-                <div className="flex items-center gap-2">
+              {/* Social Links: GitHub, LinkedIn & X */}
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                <span className="text-xs font-mono text-slate-500 font-medium">Connect:</span>
+                <div className="flex items-center gap-1.5">
                   {/* GitHub Profile Button */}
                   <a
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
                     aria-label={`${member.name}'s GitHub`}
                   >
                     <ICONS.GitHub className="w-3.5 h-3.5" />
@@ -170,11 +180,23 @@ export default function Education() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#0A66C2] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#0A66C2] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
                     aria-label={`${member.name}'s LinkedIn`}
                   >
                     <ICONS.LinkedIn className="w-3.5 h-3.5" />
                     <span>LinkedIn</span>
+                  </a>
+
+                  {/* X (Twitter) Profile Button */}
+                  <a
+                    href={member.x}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-black hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+                    aria-label={`${member.name}'s X profile`}
+                  >
+                    <ICONS.X className="w-3.5 h-3.5" />
+                    <span>X</span>
                   </a>
                 </div>
               </div>

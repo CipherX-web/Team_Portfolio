@@ -29,10 +29,10 @@ const ICONS = {
 };
 
 const SOCIALS = [
-  { name: 'LinkedIn', url: 'https://linkedin.com', icon: ICONS.LinkedIn },
-  { name: 'GitHub', url: 'https://github.com', icon: ICONS.GitHub },
-  { name: 'X', url: 'https://x.com', icon: ICONS.Twitter },
-  { name: 'Mail', url: 'mailto:hello@cipherx.dev', icon: ICONS.Mail },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/cipherx-team/', icon: ICONS.LinkedIn },
+  { name: 'GitHub', url: 'https://github.com/cipherxwebteam', icon: ICONS.GitHub },
+  { name: 'X', url: 'https://x.com/CipherXzr', icon: ICONS.Twitter },
+  { name: 'Mail', url: 'mailto:cipherx.webteam@gmail.com', icon: ICONS.Mail },
 ];
 
 export default function SocialMagnet() {

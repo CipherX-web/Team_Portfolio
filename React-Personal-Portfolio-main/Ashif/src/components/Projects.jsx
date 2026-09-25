@@ -28,7 +28,7 @@ const projectData = [
         videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764394626/1764393871242766_dqfnqn.mp4',
         imageUrl: project1Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'TimescaleDB'],
     },
     {
@@ -37,7 +37,7 @@ const projectData = [
         videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764395075/1764395026924189_ij9257.mov',
         imageUrl: project7Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['React Native', 'Python', 'FastAPI', 'Redis', 'SQLite'],
     },
     {
@@ -46,7 +46,7 @@ const projectData = [
         videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764395357/1764395325884939_lrg7f4.mp4',
         imageUrl: project5Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['Node.js', 'WebSockets', 'PostgreSQL', 'Go', 'Redis Streams'],
     },
     {
@@ -55,7 +55,7 @@ const projectData = [
         videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764396382/1764396334647746_qruqaf.mp4',
         imageUrl: project2Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['Go', 'gRPC', 'Kubernetes', 'Docker', 'Envoy'],
     },
     {
@@ -63,7 +63,7 @@ const projectData = [
         description: 'A dynamic event-driven workflow orchestrator with real-time visual DAG execution monitoring and distributed state persistence.',
         imageUrl: project3Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['TypeScript', 'Next.js', 'GraphQL', 'Kafka'],
     },
     {
@@ -71,7 +71,7 @@ const projectData = [
         description: 'Zero-overhead cluster health diagnostic dashboard and autoscaling telemetry aggregator for containerized enterprise workloads.',
         imageUrl: project4Img,
         liveUrl: '#',
-        repoUrl: 'https://github.com',
+        repoUrl: 'https://github.com/cipherxwebteam',
         tags: ['Go', 'React', 'Prometheus', 'Kubernetes'],
     },
 ];

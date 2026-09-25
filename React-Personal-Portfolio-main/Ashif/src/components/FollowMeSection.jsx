@@ -6,7 +6,7 @@ export default function FollowMeSection() {
   const [showCrosshair, setShowCrosshair] = useState(false);
 
   // Team channel URL
-  const channelUrl = "https://github.com";
+  const channelUrl = "https://github.com/cipherxwebteam";
 
   const handleShootClick = () => {
     window.open(channelUrl, "_blank");

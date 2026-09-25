@@ -450,7 +450,7 @@ h1.wordmark {
   gap: 52px;
   white-space: nowrap;
   width: max-content;
-  animation: scrollLeft 24s linear infinite;
+  animation: scrollLeft 12s linear infinite;
   font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--muted);
