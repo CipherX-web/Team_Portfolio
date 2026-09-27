@@ -21,7 +21,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-white text-slate-900 py-16 sm:py-24 border-t border-slate-200/60">
+    <section id="about" className="relative w-full bg-white text-slate-900 pt-4 sm:pt-12 pb-14 sm:pb-24">
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">

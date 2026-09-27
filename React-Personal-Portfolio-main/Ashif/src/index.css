@@ -15,6 +15,11 @@ a[href*="spline.design"],
   pointer-events: none !important;
 }
 
+/* Ensure canvas background is transparent so the dot grid & ambient gradient show through */
+canvas {
+  background-color: transparent !important;
+}
+
 .btn {
   width: 150px; /* Increased width to fit text */
   height: 50px; /* Increased height for better proportion */

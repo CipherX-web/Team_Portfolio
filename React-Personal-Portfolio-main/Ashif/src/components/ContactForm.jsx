@@ -102,7 +102,7 @@ export default function ContactForm() {
               Get In Touch
             </h2>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-              Have a project in mind? Reach out to our collective at{' '}
+              Have a project in mind? Reach out to our team at{' '}
               <a
                 href={`mailto:${TEAM_EMAIL}`}
                 className="text-blue-600 dark:text-blue-400 font-semibold underline hover:text-blue-700 transition"

@@ -7,7 +7,7 @@ import { WordRotate } from "@/components/ui/word-rotate";
 /**
  * A modern, minimal hero section component.
  */
-export default function Hero() {
+export default function Hero({ onSplineReady }) {
   const capabilities = [
     'Web & App Developers',
     '5 Passionate Builders',
@@ -22,9 +22,28 @@ export default function Hero() {
         // Expose to window for debugging in browser console
         window._splineApp = splineApp;
 
-        if (typeof splineApp.setBackgroundColor === 'function') {
-          splineApp.setBackgroundColor('#F3F7FF');
-        }
+        // Make scene & canvas background transparent so the blue-white dotted grid & ambient blur show through
+        const makeTransparent = () => {
+          try {
+            if (typeof splineApp.setBackgroundColor === 'function') {
+              try { splineApp.setBackgroundColor('transparent'); } catch (_) {}
+            }
+            const scene = splineApp._scene || splineApp.scene || splineApp._renderer?.scene;
+            if (scene) {
+              scene.background = null;
+            }
+            const renderer = splineApp._renderer;
+            if (renderer) {
+              if (typeof renderer.setClearColor === 'function') {
+                renderer.setClearColor(0x000000, 0);
+              }
+              if (renderer.domElement) {
+                renderer.domElement.style.background = 'transparent';
+              }
+            }
+            splineApp.requestRender?.();
+          } catch (_) {}
+        };
 
         // Hide "logo" (NEXOBOT background text) — exact name found via scene traversal
         const hideNexoBotObjects = () => {
@@ -84,14 +103,27 @@ export default function Hero() {
         };
 
         // Run immediately and after delays to ensure scene is fully loaded
+        makeTransparent();
         hideNexoBotObjects();
         disableWatermark();
-        setTimeout(() => { hideNexoBotObjects(); disableWatermark(); }, 300);
-        setTimeout(() => { hideNexoBotObjects(); disableWatermark(); }, 1000);
-        setTimeout(() => { hideNexoBotObjects(); disableWatermark(); }, 3000);
+        setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 150);
+        setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 400);
+        setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 1000);
+        setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 2500);
+
+        // Notify parent that Spline is ready and can transition
+        if (typeof onSplineReady === 'function') {
+          setTimeout(() => {
+            onSplineReady();
+          }, 180);
+        }
       }
     } catch (err) {
       console.warn('Spline setup:', err);
+      // Fallback in case of error
+      if (typeof onSplineReady === 'function') {
+        onSplineReady();
+      }
     }
   };
 
@@ -109,10 +141,12 @@ export default function Hero() {
       <div className="absolute -bottom-24 -left-20 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none z-0" />
 
       {/* 1. Spline 3D Robot - Positioned below text on mobile, full-screen on desktop */}
-      <div className="absolute bottom-0 left-0 right-0 h-[65vh] sm:h-[68vh] md:h-full md:inset-0 z-10 pointer-events-none md:pointer-events-auto flex items-center justify-center">
+      <div className="absolute bottom-0 left-0 right-0 h-[65vh] sm:h-[68vh] md:h-full md:inset-0 z-10 pointer-events-none md:pointer-events-auto flex items-center justify-center bg-transparent">
         <Spline
           scene="https://prod.spline.design/9xuF1oRA5poA131s/scene.splinecode"
           onLoad={handleSplineLoad}
+          style={{ background: 'transparent' }}
+          className="!bg-transparent w-full h-full"
           aria-label="Interactive 3D animation"
         />
       </div>
@@ -121,7 +155,7 @@ export default function Hero() {
       <div className="relative z-20 w-full pt-36 sm:pt-40 md:pt-0 md:h-full md:flex md:items-center px-4 sm:px-8 md:px-16 lg:px-24 pointer-events-none">
         <div className="max-w-md sm:max-w-lg md:max-w-xl mx-auto md:mx-0 pointer-events-auto text-center md:text-left">
           <p className="font-mono text-[11px] sm:text-xs md:text-sm tracking-wider uppercase text-[#2F5FE8] mb-1 sm:mb-2 font-semibold">
-            // full-stack collective — 5 engineers
+            // engineering team — 5 developers
           </p>
           <h1 className="font-pixel text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#0D1E40] leading-tight">
             <span className="inline-flex items-center justify-center md:justify-start whitespace-nowrap gap-x-1.5 sm:gap-x-2">
@@ -200,6 +234,14 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Smooth bottom transition fade to seamlessly blend into the About section and eliminate the harsh boundary */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 sm:h-44 pointer-events-none z-20"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(243, 247, 255, 0) 0%, rgba(243, 247, 255, 0.35) 35%, rgba(255, 255, 255, 0.85) 75%, #ffffff 100%)'
+        }}
+      />
     </section>
   );
 }

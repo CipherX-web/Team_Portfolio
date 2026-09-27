@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from './components/hero';
+import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -18,6 +19,15 @@ import './App.css'
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isSplineReady, setIsSplineReady] = useState(false);
+
+  // Safety fallback: reveal site after 6.5s in case of slow connection
+  useEffect(() => {
+    const safetyTimer = setTimeout(() => {
+      setIsSplineReady(true);
+    }, 6500);
+    return () => clearTimeout(safetyTimer);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,10 +64,11 @@ function App() {
 
   return (
     <>
+      <Preloader isReady={isSplineReady} />
       {!isMobile && <SmoothCursor />}
       <Navbar />
       <main>
-        <Hero />
+        <Hero onSplineReady={() => setIsSplineReady(true)} />
         <About />
         <Skills />
         <Education />
