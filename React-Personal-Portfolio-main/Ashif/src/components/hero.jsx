@@ -9,10 +9,10 @@ import { WordRotate } from "@/components/ui/word-rotate";
  */
 export default function Hero() {
   const capabilities = [
-    'Full-Stack Collective',
-    '5 Core Engineers',
-    'Schema to Interface',
-    'Scalable Systems Architects'
+    'Web & App Developers',
+    '5 Passionate Builders',
+    'Creative & Modern Code',
+    'Turning Ideas Into Reality'
   ];
   const greetings = ["Hello,", "ආයුබෝවන්,", "வணக்கம்,"];
 
@@ -146,7 +146,7 @@ export default function Hero() {
           </div>
 
           <p className="hidden md:block text-[#5B6B8C] text-sm sm:text-base mt-4 max-w-lg leading-relaxed font-sans font-medium">
-            We design, architect, and ship high-performance software end to end — from schema to interface, from first commit to production scale.
+            We are a team of 5 developers creating modern websites, responsive user interfaces, and practical software solutions.
           </p>
         
           {/* Call-to-action buttons */}

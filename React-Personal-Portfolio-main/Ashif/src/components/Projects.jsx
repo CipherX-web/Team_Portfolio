@@ -1,78 +1,36 @@
 "use client"
 
-import React, { useState } from 'react';
+import React from 'react';
 import GlareHover from './GlareHover';
 import { Highlighter } from "@/components/ui/highlighter";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 import { cn } from "@/lib/utils";
+import { ExternalLink, Github } from 'lucide-react';
 
+import p1Img from '../assets/projects/p1_image.jpeg';
+import p2Img from '../assets/projects/p2_image.jpeg';
 
-// --- 1. Import your project images ---
-
-import project1Img from '../assets/projects/project1.png';
-import project2Img from '../assets/projects/project2.png';
-import project3Img from '../assets/projects/Project3.png';
-import project4Img from '../assets/projects/Project4.png';
-import project5Img from '../assets/projects/project5.png';
-import project6Img from '../assets/projects/project6.png';
-import project7Img from '../assets/projects/project7.png';
-import project8Img from '../assets/projects/project8.png';
-import project9Img from '../assets/projects/project9.png';
-import { Truck } from 'lucide-react';
-
-// --- Data for the projects ---
+// --- Real Team Projects (p1 & p2) ---
 const projectData = [
     {
-        title: 'Project Aperture',
-        description: 'A unified observability and telemetry platform delivering sub-second anomaly detection, dynamic RBAC workspaces, and live streaming metrics across distributed microservices.',
-        videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764394626/1764393871242766_dqfnqn.mp4',
-        imageUrl: project1Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'TimescaleDB'],
+        id: 'smart-dustbin',
+        title: 'Smart Dustbin System',
+        subtitle: 'IoT · Renewable Energy · Waste Management',
+        description: 'An IoT-based smart waste management system featuring separate organic & inorganic compartments, ultrasonic fill-level and methane odor sensors. Automatically sends real-time alerts to municipal teams to optimize garbage collection routes, and incorporates solar-powered public amenities (USB charging, cooling fans, and night lighting).',
+        imageUrl: p1Img,
+        liveUrl: 'https://sdb-waste-management-system.web.app/',
+        repoUrl: 'https://github.com/LakshanSj/smart-dustbin-waste-management-system',
+        tags: ['IoT', 'Arduino / Sensors', 'Web Dashboard', 'Solar Energy', 'Smart City'],
     },
     {
-        title: 'Ledgerly Engine',
-        description: 'An offline-first reconciliation and financial operations engine for global remote teams with automatic currency conversion, cryptographic audit trails, and instant receipt OCR parsing.',
-        videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764395075/1764395026924189_ij9257.mov',
-        imageUrl: project7Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['React Native', 'Python', 'FastAPI', 'Redis', 'SQLite'],
-    },
-    {
-        title: 'Relay Event Bus',
-        description: 'A high-concurrency event bus and notification dispatcher processing over 10M webhook deliveries per day with idempotent retries, backpressure controls, and real-time WebSocket fan-out.',
-        videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764395357/1764395325884939_lrg7f4.mp4',
-        imageUrl: project5Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['Node.js', 'WebSockets', 'PostgreSQL', 'Go', 'Redis Streams'],
-    },
-    {
-        title: 'CipherCore Mesh',
-        description: 'Distributed microservices mesh and consensus coordination framework designed for fault-tolerant state synchronization across hybrid cloud deployments.',
-        videoUrl: 'https://res.cloudinary.com/dktapziq9/video/upload/v1764396382/1764396334647746_qruqaf.mp4',
-        imageUrl: project2Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['Go', 'gRPC', 'Kubernetes', 'Docker', 'Envoy'],
-    },
-    {
-        title: 'Synapse Flow',
-        description: 'A dynamic event-driven workflow orchestrator with real-time visual DAG execution monitoring and distributed state persistence.',
-        imageUrl: project3Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['TypeScript', 'Next.js', 'GraphQL', 'Kafka'],
-    },
-    {
-        title: 'KubePulse Monitor',
-        description: 'Zero-overhead cluster health diagnostic dashboard and autoscaling telemetry aggregator for containerized enterprise workloads.',
-        imageUrl: project4Img,
-        liveUrl: '#',
-        repoUrl: 'https://github.com/cipherxwebteam',
-        tags: ['Go', 'React', 'Prometheus', 'Kubernetes'],
+        id: 'unimed',
+        title: 'UniMed Healthcare System',
+        subtitle: 'Full-Stack Web · Cloud Healthcare Management',
+        description: 'A comprehensive university healthcare management platform designed to replace manual record-keeping with a secure, cloud-based workflow. Features tailored digital portals for students, doctors, and lab assistants for streamlined appointments, lab requests, and medical histories.',
+        imageUrl: p2Img,
+        liveUrl: 'https://unimed-23t.pages.dev',
+        repoUrl: 'https://github.com/Kamithaakash/UniMed-MORASHIFT',
+        tags: ['React', 'Flask API', 'MongoDB', 'Tailwind CSS', 'Cloudflare'],
     },
 ];
 
@@ -80,69 +38,76 @@ const projectData = [
 const ProjectCard = ({ project }) => (
     <GlareHover
         glareColor="#ffffff"
-        glareOpacity={0.3}
+        glareOpacity={0.25}
         glareAngle={-30}
-        glareSize={300}
-        transitionDuration={1350}
+        glareSize={350}
+        transitionDuration={1200}
         playOnce={true}
         width="100%"
         height="100%"
         background="#fff"
-        borderRadius="16px"
+        borderRadius="20px"
         className="h-full"
-        style={{ border: '1px solid #e5e7eb' }}
+        style={{ border: '1px solid #e2e8f0' }}
     >
-        <div className="flex flex-col h-full bg-white rounded-[16px] overflow-hidden">
-            {project.videoUrl ? (
-                <video
-                    src={project.videoUrl}
-                    autoPlay
-                    loop
-                    muted
-                    className="w-full h-1/2 object-cover"
-                    poster={project.imageUrl}
-                />
-            ) : (
+        <div className="flex flex-col h-full bg-white rounded-[20px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+            {/* Project Image Banner */}
+            <div className="relative w-full h-56 sm:h-64 bg-slate-100 overflow-hidden border-b border-slate-100 flex items-center justify-center">
                 <img
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-1/2 object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-            )}
-            <div className="p-4 flex-grow flex flex-col">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+            </div>
+
+            {/* Card Content */}
+            <div className="p-6 sm:p-7 flex flex-col flex-grow">
+                {project.subtitle && (
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#2F5FE8] font-semibold mb-1">
+                        {project.subtitle}
+                    </span>
+                )}
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0D1E40] mb-2.5 font-sans">
                     {project.title}
                 </h3>
-                <p className="text-gray-600 text-xs mb-2 flex-grow">
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5 flex-grow font-sans">
                     {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1 mb-2">
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-6">
                     {project.tags.map((tag) => (
                         <span
                             key={tag}
-                            className="bg-gray-200 text-gray-800 text-[10px] font-semibold px-2 py-0.5 rounded-full"
+                            className="bg-blue-50/80 text-[#2F5FE8] border border-blue-200/60 text-[11px] font-mono font-medium px-2.5 py-1 rounded-md"
                         >
                             {tag}
                         </span>
                     ))}
                 </div>
-                <div className="flex items-center justify-start space-x-3 mt-auto pt-1">
-                    <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-800 font-semibold text-xs transition-colors duration-300"
-                    >
-                        Live Demo
-                    </a>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 mt-auto">
+                    {project.liveUrl && project.liveUrl !== '#' && (
+                        <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#2F5FE8] hover:bg-[#2049bf] rounded-lg shadow-sm hover:shadow transition-all duration-200 active:scale-95"
+                        >
+                            <ExternalLink size={14} />
+                            <span>Live Demo</span>
+                        </a>
+                    )}
                     {project.repoUrl && project.repoUrl !== '#' && (
                         <a
                             href={project.repoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-600 hover:text-gray-900 font-semibold text-xs transition-colors duration-300"
+                            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white rounded-lg transition-all duration-200 active:scale-95"
                         >
-                            View Code
+                            <Github size={14} />
+                            <span>View Code</span>
                         </a>
                     )}
                 </div>
@@ -153,62 +118,44 @@ const ProjectCard = ({ project }) => (
 
 // --- Main Projects Section Component ---
 export default function Projects() {
-    const [showAll, setShowAll] = useState(false);
-    const displayedProjects = showAll ? projectData : projectData.slice(0, 3);
-
     return (
         <section
             id="projects"
-            // --- 1. Added bg-white (or bg-background) here ---
-            className="relative w-full text-black py-20 overflow-hidden bg-white"
+            className="relative w-full text-black py-20 overflow-hidden bg-white border-t border-slate-200/60"
         >
             <InteractiveGridPattern
                 className={cn(
                     "absolute inset-0 h-full w-full",
                     "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]"
                 )}
-                // --- 2. Added the missing props from your demo ---
                 width={20}
                 height={20}
                 squares={[80, 80]}
-                // You can set a static color for the squares
                 squaresClassName="fill-gray-100"
             />
 
-            <div className="relative z-10 px-2">
-                <div className="text-center mb-12">
-                    <h2 className="text-5xl font-bold font-pixel underline-wavy-yellow inline-block">
+            <div className="relative z-10 px-4 sm:px-6">
+                <div className="text-center mb-12 sm:mb-14">
+                    <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#2F5FE8] font-semibold mb-2">
+                        // Our Work
+                    </p>
+                    <h2 className="text-4xl sm:text-5xl font-bold font-pixel underline-wavy-yellow inline-block text-[#0D1E40]">
                         <Highlighter action="underline" color="#FFD700">
-                            Projects 🚀
+                            Featured Projects 🚀
                         </Highlighter>
                     </h2>
+                    <p className="text-slate-600 font-sans text-sm sm:text-base mt-3 max-w-xl mx-auto">
+                        Real-world software and hardware systems built collaboratively by our team.
+                    </p>
                 </div>
-                <div className="grid grid-cols-3 gap-6 max-w-screen-lg mx-auto">
-                    {displayedProjects.map((project, index) => (
-                        <div key={index} className="aspect-square">
+
+                {/* 2 Featured Projects Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    {projectData.map((project) => (
+                        <div key={project.id} className="w-full">
                             <ProjectCard project={project} />
                         </div>
                     ))}
-                </div>
-
-                {/* View More / View Less Button */}
-                <div className="text-center mt-12">
-                    {!showAll && projectData.length > 3 && (
-                        <button
-                            onClick={() => setShowAll(true)}
-                            className="btn"
-                        >
-                            View More
-                        </button>
-                    )}
-                    {showAll && (
-                        <button
-                            onClick={() => setShowAll(false)}
-                            className="btn"
-                        >
-                            View Less
-                        </button>
-                    )}
                 </div>
             </div>
         </section>

@@ -1,22 +1,22 @@
 import React from 'react';
-import { Layers, Rocket, ShieldCheck } from 'lucide-react';
+import { Code2, Users, Sparkles } from 'lucide-react';
 
 export default function About() {
   const highlights = [
     {
-      icon: <Layers className="w-5 h-5 text-[#2F5FE8]" />,
-      title: "5 Full-Stack Engineers",
-      desc: "An integrated collective covering UI, APIs, mobile, and cloud platform."
+      icon: <Code2 className="w-5 h-5 text-[#2F5FE8]" />,
+      title: "Web & App Development",
+      desc: "Building responsive websites, interactive user interfaces, and functional backend services."
     },
     {
-      icon: <Rocket className="w-5 h-5 text-[#2F5FE8]" />,
-      title: "End-to-End Ownership",
-      desc: "From initial design and architecture to production deployment and scale."
+      icon: <Users className="w-5 h-5 text-[#2F5FE8]" />,
+      title: "Team Collaboration",
+      desc: "A dedicated 5-member team working together, sharing ideas, and turning concepts into reality."
     },
     {
-      icon: <ShieldCheck className="w-5 h-5 text-[#2F5FE8]" />,
-      title: "Production Rigor",
-      desc: "Type safety, sub-100ms API targets, and automated zero-downtime CI/CD."
+      icon: <Sparkles className="w-5 h-5 text-[#2F5FE8]" />,
+      title: "Passionate Learning",
+      desc: "Continuously learning modern technologies, writing clean code, and improving our skills on every project."
     }
   ];
 
@@ -32,8 +32,8 @@ export default function About() {
             About <span className="text-[#2F5FE8]">CipherX</span>
           </h2>
           <p className="mt-4 text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed font-sans">
-            We are a tight-knit collective of 5 engineers crafting resilient digital products.
-            Instead of siloed departments, we operate as a single agile unit — shipping clean interfaces, robust APIs, and scalable infrastructure.
+            We are a team of 5 passionate developers who love building websites and digital projects together.
+            We focus on clean code, user-friendly designs, and learning modern technologies to build practical solutions.
           </p>
         </div>
 
