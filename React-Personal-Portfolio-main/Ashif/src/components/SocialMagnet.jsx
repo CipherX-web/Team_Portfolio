@@ -36,6 +36,14 @@ const SOCIALS = [
 ];
 
 export default function SocialMagnet() {
+  const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' && window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleHomeClick = (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -47,7 +55,7 @@ export default function SocialMagnet() {
   return (
     <div className="fixed bottom-3 sm:bottom-6 md:bottom-10 left-1/2 z-50 -translate-x-1/2 max-w-[calc(100vw-24px)]">
       <TooltipProvider>
-        <Dock className="p-1.5 sm:p-2.5 gap-1 sm:gap-2">
+        <Dock disableMagnification={isMobile} className="p-1.5 sm:p-2.5 gap-1 sm:gap-2">
           <DockIcon>
             <Tooltip>
               <TooltipTrigger asChild>

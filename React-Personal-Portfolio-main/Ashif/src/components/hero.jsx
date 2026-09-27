@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import { ArrowRight } from 'lucide-react';
 import RotatingText from './RotatingText';
@@ -8,6 +8,9 @@ import { WordRotate } from "@/components/ui/word-rotate";
  * A modern, minimal hero section component.
  */
 export default function Hero({ onSplineReady }) {
+  const heroRef = useRef(null);
+  const splineAppRef = useRef(null);
+  const [robotVisible, setRobotVisible] = useState(false);
   const capabilities = [
     'Web & App Developers',
     '5 Passionate Builders',
@@ -16,11 +19,43 @@ export default function Hero({ onSplineReady }) {
   ];
   const greetings = ["Hello,", "ආයුබෝවන්,", "வணக்கம்,"];
 
+  const isIntersectingRef = useRef(true);
+
+  // Automatically pause Spline WebGL rendering when hero is scrolled out of view
+  // to save 100% GPU/CPU on mobile and eliminate scroll lag
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersectingRef.current = entry.isIntersecting;
+        const app = splineAppRef.current || window._splineApp;
+        if (!app) return;
+        try {
+          if (entry.isIntersecting) {
+            if (typeof app.play === 'function') {
+              app.play();
+            }
+          } else {
+            if (typeof app.stop === 'function') {
+              app.stop();
+            }
+          }
+        } catch (_) {}
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const handleSplineLoad = (splineApp) => {
     try {
       if (splineApp) {
-        // Expose to window for debugging in browser console
+        // Expose to window and ref for performance controller
         window._splineApp = splineApp;
+        splineAppRef.current = splineApp;
 
         // Make scene & canvas background transparent so the blue-white dotted grid & ambient blur show through
         const makeTransparent = () => {
@@ -111,16 +146,23 @@ export default function Hero({ onSplineReady }) {
         setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 1000);
         setTimeout(() => { makeTransparent(); hideNexoBotObjects(); disableWatermark(); }, 2500);
 
-        // Notify parent that Spline is ready and can transition
-        if (typeof onSplineReady === 'function') {
-          setTimeout(() => {
-            onSplineReady();
-          }, 180);
+        // If user already scrolled down before Spline finished loading, pause WebGL immediately to save mobile battery
+        if (!isIntersectingRef.current && typeof splineApp.stop === 'function') {
+          try { splineApp.stop(); } catch (_) {}
         }
+
+        // Notify parent that Spline is ready and trigger smooth robot entrance
+        setTimeout(() => {
+          setRobotVisible(true);
+          if (typeof onSplineReady === 'function') {
+            onSplineReady();
+          }
+        }, 150);
       }
     } catch (err) {
       console.warn('Spline setup:', err);
       // Fallback in case of error
+      setRobotVisible(true);
       if (typeof onSplineReady === 'function') {
         onSplineReady();
       }
@@ -128,7 +170,7 @@ export default function Hero({ onSplineReady }) {
   };
 
   return (
-    <section className="relative w-full h-[100dvh] overflow-hidden bg-[#F3F7FF] flex flex-col justify-between md:block">
+    <section ref={heroRef} className="relative w-full h-[100dvh] overflow-hidden bg-[#F3F7FF] flex flex-col justify-between md:block">
       {/* Decorative Radial Grid & Ambient Blue Blobs */}
       <div 
         className="absolute inset-0 pointer-events-none z-0 opacity-80"
@@ -140,8 +182,12 @@ export default function Hero({ onSplineReady }) {
       <div className="absolute -top-32 -right-24 w-96 h-96 rounded-full bg-blue-400/25 blur-3xl pointer-events-none z-0" />
       <div className="absolute -bottom-24 -left-20 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none z-0" />
 
-      {/* 1. Spline 3D Robot - Positioned below text on mobile, full-screen on desktop */}
-      <div className="absolute bottom-0 left-0 right-0 h-[65vh] sm:h-[68vh] md:h-full md:inset-0 z-10 pointer-events-none md:pointer-events-auto flex items-center justify-center bg-transparent">
+      {/* 1. Spline 3D Robot - Positioned below text on mobile, full-screen on desktop with smooth entrance transition */}
+      <div 
+        style={{ willChange: 'opacity, transform', transform: 'translateZ(0)' }}
+        className={`absolute bottom-0 left-0 right-0 h-[65vh] sm:h-[68vh] md:h-full md:inset-0 z-10 pointer-events-none md:pointer-events-auto flex items-center justify-center bg-transparent transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        robotVisible ? 'opacity-100 scale-95 sm:scale-100 translate-y-0' : 'opacity-0 scale-90 sm:scale-95 translate-y-4'
+      }`}>
         <Spline
           scene="https://prod.spline.design/9xuF1oRA5poA131s/scene.splinecode"
           onLoad={handleSplineLoad}
@@ -158,13 +204,13 @@ export default function Hero({ onSplineReady }) {
             // engineering team — 5 developers
           </p>
           <h1 className="font-pixel text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-[#0D1E40] leading-tight">
-            <span className="inline-flex items-center justify-center md:justify-start whitespace-nowrap gap-x-1.5 sm:gap-x-2">
+            <div className="flex items-center justify-center md:justify-start gap-x-2">
               <WordRotate words={greetings} className="text-[#0D1E40]" />
               <span className="text-[#0D1E40]">We're</span>
-            </span>
-            <span className="block text-[#2F5FE8]">
+            </div>
+            <div className="text-[#2F5FE8] mt-0.5 sm:mt-1">
               CipherX
-            </span>
+            </div>
           </h1>
           
           {/* Rotating Text for Capabilities */}

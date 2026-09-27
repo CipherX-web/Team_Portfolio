@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Highlighter } from "@/components/ui/highlighter";
 import { User } from 'lucide-react';
 import member1 from '../assets/team/member1.jpg';
@@ -64,11 +65,17 @@ const TEAM_MEMBERS = [
 
 export default function Education() {
   return (
-    <section id="team" className="w-full bg-[#FAFBFD] text-slate-900 pb-20 sm:pb-28 pt-14 sm:pt-20 border-t border-slate-200/60">
+    <section id="team" className="w-full bg-[#FAFBFD] text-slate-900 pb-20 sm:pb-28 pt-14 sm:pt-20 border-t border-slate-200/60 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
+        >
           <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#2F5FE8] font-semibold mb-2">
             // Team Squad
           </p>
@@ -80,81 +87,91 @@ export default function Education() {
           <p className="text-slate-600 font-sans text-sm sm:text-base mt-3 leading-relaxed">
             A passionate team of 5 developers collaborating to build clean websites, reliable backends, and creative web applications.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 5 Members Grid: 3 cards top, 2 cards centered bottom on desktop */}
+        {/* 5 Members Grid with alternating left/right entrance on scroll */}
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 max-w-6xl mx-auto">
-          {TEAM_MEMBERS.map((member) => (
-            <div
-              key={member.id}
-              className="group relative flex flex-col justify-between w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] max-w-sm bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:border-[#2F5FE8]/40 transition-all duration-300 hover:-translate-y-1.5"
-            >
-              {/* Top Accent Gradient Border on Hover */}
-              <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-[#2F5FE8] via-cyan-400 to-[#2F5FE8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {TEAM_MEMBERS.map((member, index) => {
+            const isFromLeft = index % 2 === 0;
+            return (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, x: isFromLeft ? -45 : 45 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.85, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                style={{ willChange: 'transform, opacity' }}
+                className="group relative flex flex-col justify-between w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] max-w-sm bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:border-[#2F5FE8]/40 transition-colors duration-300 hover:-translate-y-1.5"
+              >
+                {/* Top Accent Gradient Border on Hover */}
+                <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-[#2F5FE8] via-cyan-400 to-[#2F5FE8] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <div>
-                {/* Member Picture & Status Badge */}
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    {member.avatar ? (
-                      <img
-                        src={member.avatar}
-                        alt={member.name}
-                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-slate-100 group-hover:ring-[#2F5FE8]/50 shadow-md transition-all duration-300 group-hover:scale-105"
+                <div>
+                  {/* Member Picture & Status Badge */}
+                  <div className="flex items-center gap-4">
+                    <div className="relative">
+                      {member.avatar ? (
+                        <img
+                          src={member.avatar}
+                          alt={member.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-slate-100 group-hover:ring-[#2F5FE8]/50 shadow-md transition-all duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100/70 border border-blue-200/80 flex items-center justify-center text-[#2F5FE8] ring-2 ring-slate-100 group-hover:ring-[#2F5FE8]/50 shadow-md transition-all duration-300 group-hover:scale-105 select-none">
+                          <User className="w-8 h-8 sm:w-9 sm:h-9 text-[#2F5FE8]/80 stroke-[1.8]" />
+                        </div>
+                      )}
+                      <span
+                        className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-sm"
+                        title="Active Member"
                       />
-                    ) : (
-                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100/70 border border-blue-200/80 flex items-center justify-center text-[#2F5FE8] ring-2 ring-slate-100 group-hover:ring-[#2F5FE8]/50 shadow-md transition-all duration-300 group-hover:scale-105 select-none">
-                        <User className="w-8 h-8 sm:w-9 sm:h-9 text-[#2F5FE8]/80 stroke-[1.8]" />
-                      </div>
-                    )}
-                    <span
-                      className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-sm"
-                      title="Active Member"
-                    />
-                  </div>
+                    </div>
 
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#0D1E40] truncate group-hover:text-[#2F5FE8] transition-colors">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-medium text-[#2F5FE8] line-clamp-2 mt-0.5">
-                      {member.role}
-                    </p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#0D1E40] truncate group-hover:text-[#2F5FE8] transition-colors">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm font-medium text-[#2F5FE8] line-clamp-2 mt-0.5">
+                        {member.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Social Links: GitHub & LinkedIn */}
-              <div className="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between gap-2">
-                <span className="text-xs font-mono text-slate-500 font-medium">Connect:</span>
-                <div className="flex items-center gap-2">
-                  {/* GitHub Profile Button */}
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
-                    aria-label={`${member.name}'s GitHub`}
-                  >
-                    <ICONS.GitHub className="w-3.5 h-3.5" />
-                    <span>GitHub</span>
-                  </a>
+                {/* Social Links: GitHub & LinkedIn */}
+                <div className="pt-5 mt-6 border-t border-slate-100 flex items-center justify-between gap-2">
+                  <span className="text-xs font-mono text-slate-500 font-medium">Connect:</span>
+                  <div className="flex items-center gap-2">
+                    {/* GitHub Profile Button */}
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+                      aria-label={`${member.name}'s GitHub`}
+                    >
+                      <ICONS.GitHub className="w-3.5 h-3.5" />
+                      <span>GitHub</span>
+                    </a>
 
-                  {/* LinkedIn Profile Button */}
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#0A66C2] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
-                    aria-label={`${member.name}'s LinkedIn`}
-                  >
-                    <ICONS.LinkedIn className="w-3.5 h-3.5" />
-                    <span>LinkedIn</span>
-                  </a>
+                    {/* LinkedIn Profile Button */}
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#0077b5] hover:text-white transition-all duration-200 shadow-xs hover:shadow active:scale-95"
+                      aria-label={`${member.name}'s LinkedIn`}
+                    >
+                      <ICONS.LinkedIn className="w-3.5 h-3.5" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

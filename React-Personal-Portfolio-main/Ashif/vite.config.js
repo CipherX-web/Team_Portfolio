@@ -11,4 +11,17 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-spline': ['@splinetool/react-spline'],
+          'vendor-motion': ['framer-motion', 'motion'],
+          'vendor-gsap': ['gsap'],
+          'vendor-ui': ['lucide-react', 'clsx', 'tailwind-merge'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1200,
+  },
 })

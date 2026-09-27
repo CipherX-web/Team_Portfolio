@@ -19,7 +19,7 @@ export default function Preloader({ isReady }) {
       }, 150);
       const unmountTimer = setTimeout(() => {
         setUnmounted(true);
-      }, 1250);
+      }, 1450);
       return () => {
         clearTimeout(timer);
         clearTimeout(unmountTimer);
@@ -42,7 +42,7 @@ export default function Preloader({ isReady }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#F3F7FF] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-[#F3F7FF] transition-all duration-[1250ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
         fadeOut ? 'opacity-0 scale-105 blur-sm pointer-events-none' : 'opacity-100 scale-100'
       }`}
       aria-label="Loading CipherX Experience"

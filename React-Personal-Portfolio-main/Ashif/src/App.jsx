@@ -34,31 +34,35 @@ function App() {
       setIsMobile(window.innerWidth < 768);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
 
-    // 1. Initialize Lenis with custom settings for scroll speed
-    const lenis = new Lenis({
-      duration: 1.2, // Affects the animation duration
-      lerp: 0.05, // Lower values (e.g., 0.05) are smoother and "floatier". Higher values (e.g., 0.2) are more responsive.
-      smoothWheel: true,
-    });
+    // Only initialize Lenis on desktop with mouse wheel
+    // Mobile devices perform best using native hardware-accelerated 120Hz/60Hz touch scrolling
+    let lenis = null;
+    let tickerCallback = null;
 
-    // 2. Connect Lenis to GSAP's ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+    if (window.innerWidth >= 768) {
+      lenis = new Lenis({
+        duration: 1.0,
+        lerp: 0.1, // Snappy and responsive without sluggish lag
+        smoothWheel: true,
+        syncTouch: false,
+      });
 
-    // 3. Use GSAP's ticker to drive Lenis's animation loop
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+      lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.lagSmoothing(0);
+      tickerCallback = (time) => {
+        lenis.raf(time * 1000);
+      };
+      gsap.ticker.add(tickerCallback);
+    }
 
-    // 4. Cleanup on component unmount
+    // Cleanup on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
-      lenis.destroy();
+      if (lenis) lenis.destroy();
+      if (tickerCallback) gsap.ticker.remove(tickerCallback);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 

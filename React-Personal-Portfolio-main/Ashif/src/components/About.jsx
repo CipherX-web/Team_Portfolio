@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code2, Users, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function About() {
   const highlights = [
@@ -21,10 +22,16 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-white text-slate-900 pt-4 sm:pt-12 pb-14 sm:pb-24">
+    <section id="about" className="relative w-full bg-white text-slate-900 pt-4 sm:pt-12 pb-14 sm:pb-24 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        {/* Header with smooth reveal */}
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
+        >
           <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#2F5FE8] font-semibold mb-2">
             // Who We Are
           </p>
@@ -35,26 +42,34 @@ export default function About() {
             We are a team of 5 passionate developers who love building websites and digital projects together.
             We focus on clean code, user-friendly designs, and learning modern technologies to build practical solutions.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 3 Simple Highlight Cards */}
+        {/* 3 Simple Highlight Cards with alternating left/right entrance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-          {highlights.map((item, index) => (
-            <div
-              key={index}
-              className="bg-[#F8FAFC] rounded-xl p-5 sm:p-6 border border-slate-200/80 hover:border-[#2F5FE8]/40 hover:bg-[#F3F7FF]/50 transition-all duration-300 shadow-xs hover:shadow-md"
-            >
-              <div className="w-10 h-10 rounded-lg bg-blue-100/70 flex items-center justify-center mb-3.5">
-                {item.icon}
-              </div>
-              <h3 className="text-base sm:text-lg font-bold text-[#0D1E40] mb-1.5 font-sans">
-                {item.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+          {highlights.map((item, index) => {
+            const isFromLeft = index % 2 === 0;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: isFromLeft ? -45 : 45 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.85, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                style={{ willChange: 'transform, opacity' }}
+                className="bg-[#F8FAFC] rounded-xl p-5 sm:p-6 border border-slate-200/80 hover:border-[#2F5FE8]/40 hover:bg-[#F3F7FF]/50 transition-colors duration-300 shadow-xs hover:shadow-md"
+              >
+                <div className="w-10 h-10 rounded-lg bg-blue-100/70 flex items-center justify-center mb-3.5">
+                  {item.icon}
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-[#0D1E40] mb-1.5 font-sans">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                  {item.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

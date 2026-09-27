@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import GlareHover from './GlareHover';
 import { Highlighter } from "@/components/ui/highlighter";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
@@ -56,6 +57,8 @@ const ProjectCard = ({ project }) => (
                 <img
                     src={project.imageUrl}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
             </div>
@@ -135,7 +138,13 @@ export default function Projects() {
             />
 
             <div className="relative z-10 px-4 sm:px-6">
-                <div className="text-center mb-12 sm:mb-14">
+                <motion.div 
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-center mb-12 sm:mb-14"
+                >
                     <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#2F5FE8] font-semibold mb-2">
                         // Our Work
                     </p>
@@ -147,15 +156,25 @@ export default function Projects() {
                     <p className="text-slate-600 font-sans text-sm sm:text-base mt-3 max-w-xl mx-auto">
                         Real-world software and hardware systems built collaboratively by our team.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* 2 Featured Projects Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {projectData.map((project) => (
-                        <div key={project.id} className="w-full">
-                            <ProjectCard project={project} />
-                        </div>
-                    ))}
+                    {projectData.map((project, idx) => {
+                        const isFromLeft = idx % 2 === 0;
+                        return (
+                            <motion.div
+                                key={project.id}
+                                initial={{ opacity: 0, x: isFromLeft ? -45 : 45 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-40px" }}
+                                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+                                className="w-full"
+                            >
+                                <ProjectCard project={project} />
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

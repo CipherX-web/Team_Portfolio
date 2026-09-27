@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { cn } from "@/lib/utils";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { Mail, Send, CheckCircle2, AlertCircle, Loader2, Copy, Check, RotateCcw } from "lucide-react";
@@ -92,7 +93,13 @@ export default function ContactForm() {
       />
       <div className="relative z-10 container px-4 mx-auto">
         {/* Centered Form */}
-        <div className="max-w-md mx-auto px-5 py-6 sm:px-8 sm:py-8 bg-gray-50/95 dark:bg-zinc-900/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/80 dark:border-zinc-800 transition-all">
+        <motion.div 
+          initial={{ opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-md mx-auto px-5 py-6 sm:px-8 sm:py-8 bg-gray-50/95 dark:bg-zinc-900/90 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/80 dark:border-zinc-800 transition-all"
+        >
           <div className="text-center mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-800/60 mb-3">
               <Mail className="w-3.5 h-3.5" />
@@ -235,10 +242,16 @@ export default function ContactForm() {
               </button>
             </form>
           )}
-        </div>
+        </motion.div>
 
         {/* Direct Email Badge with Copy Action */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-200 shadow-sm border border-gray-200 dark:border-zinc-800">
             <Mail className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span>Direct Email:</span>
@@ -264,7 +277,7 @@ export default function ContactForm() {
               )}
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

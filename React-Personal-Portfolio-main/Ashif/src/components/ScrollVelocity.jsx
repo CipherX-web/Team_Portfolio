@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from 'react';
+import { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import {
   motion,
   useScroll,
@@ -19,7 +19,7 @@ function useElementWidth(ref) {
       }
     }
     updateWidth();
-    window.addEventListener('resize', updateWidth);
+    window.addEventListener('resize', updateWidth, { passive: true });
     return () => window.removeEventListener('resize', updateWidth);
   }, [ref]);
 
@@ -58,6 +58,22 @@ export function VelocityText({
   const copyRef = useRef(null);
   const copyWidth = useElementWidth(copyRef);
 
+  const containerRef = useRef(null);
+  const isInViewRef = useRef(true);
+
+  // Performance optimization: Only compute animation frames when visible in viewport
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInViewRef.current = entry.isIntersecting;
+      },
+      { rootMargin: '120px' }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   function wrap(min, max, v) {
     const range = max - min;
     const mod = (((v - min) % range) + range) % range;
@@ -71,6 +87,8 @@ export function VelocityText({
 
   const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {
+    if (!isInViewRef.current) return; // Skip 100% of CPU work when scrolled away
+
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
     if (velocityFactor.get() < 0) {
@@ -93,7 +111,7 @@ export function VelocityText({
   }
 
   return (
-    <div className={`${parallaxClassName} relative overflow-hidden`} style={parallaxStyle}>
+    <div ref={containerRef} className={`${parallaxClassName} relative overflow-hidden`} style={parallaxStyle}>
       <motion.div
         className={`${scrollerClassName} flex whitespace-nowrap`}
         style={{ x, ...scrollerStyle }}

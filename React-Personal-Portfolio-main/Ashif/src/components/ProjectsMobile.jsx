@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Highlighter } from "@/components/ui/highlighter";
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -31,8 +32,14 @@ const projectData = [
 
 export default function ProjectsMobile() {
     return (
-        <section id="projects-mobile" className="w-full bg-white text-black py-16 px-4 border-t border-slate-200/60">
-            <div className="text-center mb-10">
+        <section id="projects-mobile" className="w-full bg-white text-black py-16 px-4 border-t border-slate-200/60 overflow-hidden">
+            <motion.div 
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center mb-10"
+            >
                 <p className="font-mono text-xs tracking-wider uppercase text-[#2F5FE8] font-semibold mb-1">
                     // Our Work
                 </p>
@@ -44,62 +51,75 @@ export default function ProjectsMobile() {
                 <p className="text-slate-600 font-sans text-xs sm:text-sm mt-2 max-w-sm mx-auto">
                     Real-world software and hardware systems built collaboratively by our team.
                 </p>
-            </div>
+            </motion.div>
             <div className="flex flex-col gap-6 max-w-md mx-auto">
-                {projectData.map((project) => (
-                    <div key={project.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
-                        <div className="w-full h-48 bg-slate-100 overflow-hidden border-b border-slate-100">
-                            <img
-                                src={project.imageUrl}
-                                alt={project.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="p-5 flex flex-col flex-grow">
-                            {project.subtitle && (
-                                <span className="text-[10px] font-mono uppercase tracking-wider text-[#2F5FE8] font-semibold mb-1">
-                                    {project.subtitle}
-                                </span>
-                            )}
-                            <h3 className="text-lg font-bold text-[#0D1E40] mb-2">{project.title}</h3>
-                            <p className="text-xs text-slate-600 mb-4 leading-relaxed">{project.description}</p>
-                            <div className="flex flex-wrap gap-1.5 mb-5">
-                                {project.tags && project.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="bg-blue-50/80 text-[#2F5FE8] border border-blue-200/60 text-[10px] font-mono font-medium px-2 py-0.5 rounded-md"
-                                    >
-                                        {tag}
+                {projectData.map((project, idx) => {
+                    const isFromLeft = idx % 2 === 0;
+                    return (
+                        <motion.div
+                            key={project.id}
+                            initial={{ opacity: 0, x: isFromLeft ? -45 : 45 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+                            style={{ willChange: 'transform, opacity' }}
+                            className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col"
+                        >
+                            <div className="w-full h-48 bg-slate-100 overflow-hidden border-b border-slate-100">
+                                <img
+                                    src={project.imageUrl}
+                                    alt={project.title}
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div className="p-5 flex flex-col flex-grow">
+                                {project.subtitle && (
+                                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#2F5FE8] font-semibold mb-1">
+                                        {project.subtitle}
                                     </span>
-                                ))}
-                            </div>
-                            <div className="flex gap-2.5 mt-auto pt-3 border-t border-slate-100">
-                                {project.liveUrl && (
-                                    <a
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-[#2F5FE8] hover:bg-[#2049bf] rounded-lg shadow-sm transition-all"
-                                    >
-                                        <ExternalLink size={13} />
-                                        <span>Live Demo</span>
-                                    </a>
                                 )}
-                                {project.repoUrl && (
-                                    <a
-                                        href={project.repoUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white rounded-lg transition-all"
-                                    >
-                                        <Github size={13} />
-                                        <span>View Code</span>
-                                    </a>
-                                )}
+                                <h3 className="text-lg font-bold text-[#0D1E40] mb-2">{project.title}</h3>
+                                <p className="text-xs text-slate-600 mb-4 leading-relaxed">{project.description}</p>
+                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                    {project.tags && project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="bg-blue-50/80 text-[#2F5FE8] border border-blue-200/60 text-[10px] font-mono font-medium px-2 py-0.5 rounded-md"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="flex gap-2.5 mt-auto pt-3 border-t border-slate-100">
+                                    {project.liveUrl && (
+                                        <a
+                                            href={project.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-[#2F5FE8] hover:bg-[#2049bf] rounded-lg shadow-sm transition-all"
+                                        >
+                                            <ExternalLink size={13} />
+                                            <span>Live Demo</span>
+                                        </a>
+                                    )}
+                                    {project.repoUrl && (
+                                        <a
+                                            href={project.repoUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-[#24292e] hover:text-white rounded-lg transition-all"
+                                        >
+                                            <Github size={13} />
+                                            <span>View Code</span>
+                                        </a>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
+                        </motion.div>
+                    );
+                })}
             </div>
         </section>
     );

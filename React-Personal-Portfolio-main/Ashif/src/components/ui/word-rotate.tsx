@@ -14,10 +14,10 @@ export function WordRotate({
   words,
   duration = 2500,
   motionProps = {
-    initial: { opacity: 0, y: -50 },
+    initial: { opacity: 0, y: -14 },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 50 },
-    transition: { duration: 0.25, ease: "easeOut" },
+    exit: { opacity: 0, y: 14 },
+    transition: { duration: 0.28, ease: "easeInOut" },
   },
   className,
 }: WordRotateProps) {
@@ -33,11 +33,11 @@ export function WordRotate({
   }, [words, duration])
 
   return (
-    <span className="inline-block overflow-hidden py-3 px-2 -my-2 -mx-1 align-middle">
+    <span className="inline-flex overflow-hidden items-center justify-center align-baseline leading-none h-[1.25em]">
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
-          className={cn("inline-block px-1", className)}
+          className={cn("inline-block whitespace-nowrap", className)}
           {...motionProps}
         >
           {words[index]}
